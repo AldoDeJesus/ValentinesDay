@@ -1,0 +1,208 @@
+body {
+    background-color: tomato;
+    background-image: linear-gradient(-45deg, crimson 48%, tomato 48%, tomato 52%, crimson 52%);
+    background-size: 50px 50px;
+    padding: 0;
+    text-align: center;
+    min-height: 100vh;
+}
+
+/* Polaroid CSS - Versión Responsiva */
+.scrapbook {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0 auto;
+    padding: 15px;
+    column-count: 2;
+    column-gap: 22px;
+    max-width: 1200px;
+}
+
+.scrapbook h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-family: "Permanent Marker", cursive;
+    padding: 10px 20px;
+    background-color: #ffeecc;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    transform: rotate(-2deg);
+    width: fit-content;
+    margin: 15px auto;
+}
+
+.scrapbook p {
+    position: relative;
+    padding: 10px;
+    background-color: #ffeecc;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transform: rotate(2deg);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.random {
+    transform: rotate(calc(-2deg + 4deg * var(--rotation))) !important;
+    background-color: var(--bgcolor) !important;
+    font-family: var(--font) !important;
+    font-size: var(--fontsize) !important;
+    white-space: pre-wrap !important;
+}
+
+.polaroid {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: rotate(var(--rotation, -4deg));
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.polaroid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+}
+
+.polaroid::before,
+.polaroid::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 20px;
+    background-color: #ccc;
+    transform: rotate(45deg);
+}
+
+.polaroid::before {
+    left: -3px;
+    top: -10px;
+}
+
+.polaroid::after {
+    right: -3px;
+    top: -10px;
+}
+
+.polaroid figcaption {
+    font-family: "Permanent Marker", cursive;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #333;
+    padding: 5px;
+}
+
+.polaroid-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.polaroid-group .polaroid {
+    width: 48%;
+    transform: rotate(-2deg);
+    margin-bottom: 25px;
+}
+
+.polaroid-group .polaroid + .polaroid {
+    transform: rotate(2deg);
+    margin-top: -20px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: black;
+    font-size: 12px;
+    text-align: right;
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 3px 8px;
+    border-radius: 3px;
+}
+
+.footer a {
+    color: black;
+    text-decoration: none;
+}
+
+/* Media Queries para móviles */
+@media (max-width: 768px) {
+    .scrapbook {
+        column-count: 1;
+        padding: 10px;
+    }
+    
+    .scrapbook h1 {
+        font-size: 22px;
+        padding: 8px 15px;
+    }
+    
+    .scrapbook p {
+        font-size: 14px;
+        max-width: 90%;
+        transform: rotate(1deg);
+    }
+    
+    .polaroid {
+        transform: rotate(var(--rotation, -2deg));
+        margin: 15px auto;
+    }
+    
+    .polaroid-group {
+        flex-direction: column;
+    }
+    
+    .polaroid-group .polaroid {
+        width: 100% !important;
+        margin-top: 0 !important;
+        transform: rotate(-1deg) !important;
+    }
+    
+    .polaroid-group .polaroid + .polaroid {
+        transform: rotate(1deg) !important;
+        margin-top: -10px !important;
+    }
+    
+    .polaroid::before,
+    .polaroid::after {
+        width: 4px;
+        height: 15px;
+    }
+    
+    .polaroid figcaption {
+        font-size: 16px;
+    }
+    
+    .footer {
+        font-size: 10px;
+        bottom: 5px;
+        right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-size: 30px 30px;
+    }
+    
+    .polaroid img {
+        height: 50vh;
+        max-height: 400px;
+    }
+}
